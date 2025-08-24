@@ -81,6 +81,7 @@ addMoneyBtn.addEventListener('click', function(e){
         date: new Date().toLocaleTimeString()
     };
     transactionData.push(data);
+    alert("Add money successful");
 });
 
 // Cash out money feature
@@ -114,6 +115,7 @@ withdrawBtn.addEventListener('click', function(e){
         date: new Date().toLocaleTimeString()
     };
     transactionData.push(data);
+    alert("Cash out successful");
 });
 
 // Transfer money feature
@@ -147,6 +149,7 @@ transferBtn.addEventListener('click', function(e){
         date: new Date().toLocaleTimeString()
     };
     transactionData.push(data);
+    alert("Transfer money successful");
 });
 
 // Pay Bill feature
@@ -185,6 +188,7 @@ payBillBtn.addEventListener('click', function(e){
         date: new Date().toLocaleTimeString()
     };
     transactionData.push(data);
+    alert("Pay bill successful");
 });
 
 // Toggle feature
