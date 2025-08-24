@@ -1,56 +1,61 @@
 let validPin = 1234;
 let transactionData = [];
 
-// Logout
-let logoutBtn = document.getElementById('logout-btn');
-logoutBtn.addEventListener('click', function(){
-    window.location.href = "index.html";
-});
+// Function to get element by ID
+function getById(id) {
+    return document.getElementById(id);
+}
+
+// Function to get elements by class name
+function getByClassName(className) {
+    return document.getElementsByClassName(className);
+}
 
 // Function to get input value number
 function getInputValueNumber(id){
-    return parseInt(document.getElementById(id).value);
+    return parseInt(getById(id).value);
 }
 
 // Function to get input value
 function getInputValue(id){
-    return document.getElementById(id).value;
-}
-
-// Function to get element by ID
-function getElementById(id){
-    return document.getElementById(id);
+    return getById(id).value;
 }
 
 // Function to get innerText
 function getInnerText(id){
-    return parseInt(getElementById(id).innerText);
+    return parseInt(getById(id).innerText);
 }
 
 // Function to set innerText
 function setInnerText(value){
-    let availableBalanceEl = getElementById('balance');
+    let availableBalanceEl = getById('balance');
     availableBalanceEl.innerText = value;
 }
 
 // Function for toggle feature
 function handleToggle(id1, id2){
-    let services = document.getElementsByClassName('service');
+    let services = getByClassName('service');
     for(let service of services){
         service.classList.remove('bg-[#f3f8fe]', 'border-[#0874f2]');
         service.classList.add('border-neutral-200');
     }
-    getElementById(id1).classList.add('bg-[#f3f8fe]', 'border-[#0874f2]');
-    getElementById(id1).classList.remove('border-neutral-200');
-    let forms = document.getElementsByClassName('form');
+    getById(id1).classList.add('bg-[#f3f8fe]', 'border-[#0874f2]');
+    getById(id1).classList.remove('border-neutral-200');
+    let forms = getByClassName('form');
     for(let form of forms){
         form.classList.add('hidden');
     }
-    getElementById(id2).classList.remove('hidden');
+    getById(id2).classList.remove('hidden');
 }
 
+// Logout
+let logoutBtn = getById('logout-btn');
+logoutBtn.addEventListener('click', function () {
+    window.location.href = "index.html";
+});
+
 // Add money feature
-let addMoneyBtn = document.getElementById('btn-add-money');
+let addMoneyBtn = getById('btn-add-money');
 addMoneyBtn.addEventListener('click', function(e){
     e.preventDefault();
     let bank = getInputValue('bank');
@@ -85,7 +90,7 @@ addMoneyBtn.addEventListener('click', function(e){
 });
 
 // Cash out money feature
-let withdrawBtn = getElementById('btn-withdraw');
+let withdrawBtn = getById('btn-withdraw');
 withdrawBtn.addEventListener('click', function(e){
     e.preventDefault();
     let agentNumber = getInputValue('agent-number');
@@ -119,7 +124,7 @@ withdrawBtn.addEventListener('click', function(e){
 });
 
 // Transfer money feature
-let transferBtn = getElementById('btn-transfer');
+let transferBtn = getById('btn-transfer');
 transferBtn.addEventListener('click', function(e){
     e.preventDefault();
     let userAccNum = getInputValue('user-acc-number');
@@ -153,7 +158,7 @@ transferBtn.addEventListener('click', function(e){
 });
 
 // Pay Bill feature
-let payBillBtn = getElementById('btn-pay');
+let payBillBtn = getById('btn-pay');
 payBillBtn.addEventListener('click', function(e){
     e.preventDefault();
     let bank = getInputValue('pay-bill-bank');
@@ -192,12 +197,12 @@ payBillBtn.addEventListener('click', function(e){
 });
 
 // Toggle feature
-let addMoneyCard = getElementById('add-money');
-let cashOutCard = getElementById('cashout');
-let transferCard = getElementById('transfer');
-let bonusCard= getElementById('get-bonus');
-let payBillCard = getElementById('pay-bill');
-let transactionCard = getElementById('transaction');
+let addMoneyCard = getById('add-money');
+let cashOutCard = getById('cashout');
+let transferCard = getById('transfer');
+let bonusCard= getById('get-bonus');
+let payBillCard = getById('pay-bill');
+let transactionCard = getById('transaction');
 
 addMoneyCard.addEventListener('click', function(){
     handleToggle('add-money', 'add-money-form');
@@ -221,7 +226,7 @@ payBillCard.addEventListener('click', function(){
 
 transactionCard.addEventListener('click', function(){
     handleToggle('transaction', 'transaction-form');
-    let transactionContainer = getElementById('transaction-container');
+    let transactionContainer = getById('transaction-container');
     transactionContainer.innerHTML = '';
     for(let data of transactionData){
         transactionContainer.innerHTML += `
